@@ -1,16 +1,15 @@
 
-       > git clone https://github.com/ritwickdey/Cake-Shop.git
+       > git clone https://github.com/juniormorales/demoarqui.git
        > cd Cake-Shop/
     ```
-    - Now Open the `CakeShop.sln` through `VS2017`.
-    - Open `appsettings.json` & change the connection string. (But wait! you may not need to change it as this the default connection string of `SQL Server Express` that comes with `Visual Studio`).
-    - Hit `Ctrl+Shift+B` to build.
-    - Open `Package Manager Console` from `Tools` and enter `update-database`.
-    - Hit `Ctrl+F5` to run without debugging.
+    - Abrir el proyecto `CakeShop.sln`
+    -  `Ctrl+Shift+B` 
+    - Abrir `Administrador de paquetes de consola` desde `Herramientas` y escribir `update-database`.
+    - Presionar `Ctrl+F5`
 
 - **Using CLI**
     ```
-        > git clone https://github.com/ritwickdey/Cake-Shop.git
+        > git clone https://github.com/juniormorales/demoarqui.git
         > cd Cake-Shop/Cake-Shop/
         > npm install
         > dotnet restore
