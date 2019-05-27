@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CakeNameIdDto>
+@{
+    ViewData["Title"] = "ManageCakes";
+}
+<h2>Administrar Productos</h2>
+<br />
+<div>
+    <a asp-action="AddCake" class="btn buy-now-btn">Agregar Nuevo Pastel</a>
+</div>
+<br />
+<table class="table ">
+    <thead>
+        <tr>
+            <th>Nombre del Pastel</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cake in Model)
+        {
+            <tr id="cake-@cake.Id">
+                <td>@cake.Name</td>
+                <td>
+                    <a class="btn btn-link btn-no-effect" asp-action="EditCake" asp-route-id="@cake.Id">Editar </a>
+                    |
+                    <button class="btn btn-link btn-no-effect deleteBtn" data-id="@cake.Id">Borrar</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+
+        $(".deleteBtn").click((e) => {
+            const id = $(e.target).data("id");
+            if (!confirm("Estas seguro de borrar de la lista?"))
+                return;
+
+            $.ajax({
+                url: '/admin/manageCakes/' + id,
+                type: 'DELETE',
+                success: () => {
+                    const target = $("#cake-" + id);
+                    $(target).fadeOut(500, () => $(target).remove());
+                },
+                error: (e) => {
+                    alert("Algo salio mal", e);
+                }
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,25 @@
+﻿<a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Hola, @(User.Identity.Name ?? "Visitante")!
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <a asp-action="login" asp-controller="account" class="dropdown-item">Ingresar</a>
+        <a asp-action="register" asp-controller="account" class="dropdown-item">Registrarse</a>
+    }
+    else
+    {
+        <a asp-action="myOrder" asp-controller="order" class="dropdown-item">Mis Pedidos</a>
+        <form method="post" asp-action="logout" asp-controller="account" class="no-padding-margin dropdown-item">
+            <button class="btn dropdown-item btn-no-effect">Cerrar Sesión</button>
+        </form>
+
+        if (User.IsInRole("Admin"))
+        {
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" asp-action="AllOrders" asp-controller="admin">Administrar Pedidos</a>
+            <a class="dropdown-item" asp-action="ManageCakes" asp-controller="admin">Administrar Productos</a>
+        }
+    }
+</div>

@@ -1,0 +1,26 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Ingreso";
+}
+<div class="row">
+    <div class="col-md-6">
+        <h2>Ingresar</h2>
+        <br />
+        <div asp-validation-summary="ModelOnly"></div>
+        <form asp-action="login" asp-controller="account" method="post">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div class="form-group">
+                <label>Correo Electrónico/Nombre de Usuario</label>
+                <input asp-for="EmailOrUsername" class="form-control" />
+                <span asp-validation-for="EmailOrUsername"></span>
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <button class="btn buy-now-btn">Ingresar</button>
+            <a asp-action="register" asp-route-returnUrl="@Model.ReturnUrl" class="float-right">No tienes una cuenta? Regístrate Aquí!</a>
+        </form>
+    </div>
+</div>

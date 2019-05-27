@@ -1,0 +1,17 @@
+﻿@model CakesListViewModel
+
+@if (Model.Cakes?.Count() > 0)
+{
+    <h1>@Model.CurrentCategory</h1>
+    <div class="row">
+        @foreach (var cake in Model.Cakes)
+        {
+            @await Html.PartialAsync("CakeView", cake);
+        }
+    </div>
+}
+else
+{
+    <h1>Pasteles</h1>
+    <p>Lo sentimos! No ha sido encontrado pasteles en '@Model.CurrentCategory' categoria. </p>
+}
